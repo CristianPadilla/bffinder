@@ -6,6 +6,7 @@ public class AdoptionPost {
     private int AdoptionPostId;
     private LocalDateTime date;
     private String description;
+    private String address;
     private Boolean active;
     private Pet pet;
 
@@ -47,5 +48,13 @@ public class AdoptionPost {
 
     public void setPet(Pet pet) {
         this.pet = pet;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class PetEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pet_id")
     private Integer petId;
 
@@ -24,6 +24,8 @@ public class PetEntity {
     private Boolean dangerous;
 
     private String size;
+
+    private String sex;
 
     private Boolean sterilized;
 
@@ -78,7 +80,7 @@ public class PetEntity {
         this.age = age;
     }
 
-    public Boolean getVaccinated() {
+    public Boolean isVaccinated() {
         return vaccinated;
     }
 
@@ -86,7 +88,7 @@ public class PetEntity {
         this.vaccinated = vaccinated;
     }
 
-    public Boolean getDangerous() {
+    public Boolean isDangerous() {
         return dangerous;
     }
 
@@ -102,7 +104,7 @@ public class PetEntity {
         this.size = size;
     }
 
-    public Boolean getSterilized() {
+    public Boolean isSterilized() {
         return sterilized;
     }
 
@@ -156,5 +158,47 @@ public class PetEntity {
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
+    }
+
+    public Boolean getVaccinated() {
+        return vaccinated;
+    }
+
+    public Boolean getDangerous() {
+        return dangerous;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Boolean getSterilized() {
+        return sterilized;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("PetEntity{");
+        sb.append("petId=").append(petId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", weight=").append(weight);
+        sb.append(", age=").append(age);
+        sb.append(", vaccinated=").append(vaccinated);
+        sb.append(", dangerous=").append(dangerous);
+        sb.append(", size='").append(size).append('\'');
+        sb.append(", sex='").append(sex).append('\'');
+        sb.append(", sterilized=").append(sterilized);
+        sb.append(", status=").append(status);
+        sb.append(", breedId=").append(breedId);
+        sb.append(", ownerId=").append(ownerId);
+        sb.append(", imageEntities=").append(imageEntities);
+        sb.append(", breedEntity=").append(breedEntity);
+        sb.append(", userEntity=").append(userEntity);
+        sb.append('}');
+        return sb.toString();
     }
 }

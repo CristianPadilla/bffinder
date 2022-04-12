@@ -8,13 +8,15 @@ import java.util.Optional;
 public interface IPetRepository {
     Optional<List<Pet>> getByOwner(int userId);
 
+    Optional<Pet> getById(int petId);
+
     Optional<List<Pet>> getAll();
 
     Optional<List<Pet>> getByBreed(int breedId);
 
     Pet save(Pet pet);
 
-    Pet update(Pet petDetails);
+    Optional<Pet> update(Pet petDetails);
 
     void delete(int petId);
 

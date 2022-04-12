@@ -18,11 +18,30 @@ public class PetService {
         return petRepository.getByOwner(ownerId);
     }
 
+    public Optional<Pet> getById(int petId) {
+        return petRepository.getById(petId);
+    }
+
     public Optional<List<Pet>> getAll() {
         return petRepository.getAll();
     }
 
     public Optional<List<Pet>> getByBreed(int breedId) {
         return petRepository.getByBreed(breedId);
+    }
+
+    public Pet save(Pet pet) {
+        return petRepository.save(pet);
+    }
+
+    public Optional<Pet> update(Pet petDetails) {
+        return petRepository.update(petDetails);
+    }
+
+    public boolean delete(int petId) {
+        if (getById(petId).isPresent()) {
+            petRepository.delete(petId);
+            return true;
+        } else return false;
     }
 }

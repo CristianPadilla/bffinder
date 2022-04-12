@@ -12,6 +12,7 @@ public interface PetCrudRepository extends CrudRepository<PetEntity, Integer> {
 
     Optional<List<PetEntity>> findByBreedId(int breedId);
 
+//    Optional<List<PetEntity>> (int breedId);
 
 
 }

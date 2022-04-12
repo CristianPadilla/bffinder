@@ -11,6 +11,7 @@ public class Pet {
     private boolean vaccinated;
     private boolean dangerous;
     private String size;
+    private String sex;
     private boolean sterilized;
     private boolean active;
     private int breedId;
@@ -130,5 +131,35 @@ public class Pet {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Pet{");
+        sb.append("petId=").append(petId);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", weight=").append(weight);
+        sb.append(", age=").append(age);
+        sb.append(", vaccinated=").append(vaccinated);
+        sb.append(", dangerous=").append(dangerous);
+        sb.append(", size='").append(size).append('\'');
+        sb.append(", sex='").append(sex).append('\'');
+        sb.append(", sterilized=").append(sterilized);
+        sb.append(", active=").append(active);
+        sb.append(", breedId=").append(breedId);
+        sb.append(", ownerId=").append(ownerId);
+        sb.append(", photos=").append(photos);
+        sb.append(", breed=").append(breed);
+        sb.append(", owner=").append(owner);
+        sb.append('}');
+        return sb.toString();
     }
 }
