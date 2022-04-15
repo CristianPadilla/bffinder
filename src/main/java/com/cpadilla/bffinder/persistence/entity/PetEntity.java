@@ -37,6 +37,9 @@ public class PetEntity {
     @Column(name = "owner_id")
     private Integer ownerId;
 
+    @OneToOne(mappedBy = "petEntity")
+    private AdoptionPostEntity adoptionPostEntity;
+
     @OneToMany(mappedBy = "petEntity", cascade = {CascadeType.ALL})
     private List<ImageEntity> imageEntities;
 
@@ -180,25 +183,12 @@ public class PetEntity {
         return sterilized;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("PetEntity{");
-        sb.append("petId=").append(petId);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", weight=").append(weight);
-        sb.append(", age=").append(age);
-        sb.append(", vaccinated=").append(vaccinated);
-        sb.append(", dangerous=").append(dangerous);
-        sb.append(", size='").append(size).append('\'');
-        sb.append(", sex='").append(sex).append('\'');
-        sb.append(", sterilized=").append(sterilized);
-        sb.append(", status=").append(status);
-        sb.append(", breedId=").append(breedId);
-        sb.append(", ownerId=").append(ownerId);
-        sb.append(", imageEntities=").append(imageEntities);
-        sb.append(", breedEntity=").append(breedEntity);
-        sb.append(", userEntity=").append(userEntity);
-        sb.append('}');
-        return sb.toString();
+    public AdoptionPostEntity getAdoptionPostEntity() {
+        return adoptionPostEntity;
     }
+
+    public void setAdoptionPostEntity(AdoptionPostEntity adoptionPostEntity) {
+        this.adoptionPostEntity = adoptionPostEntity;
+    }
+
 }

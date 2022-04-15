@@ -3,11 +3,13 @@ package com.cpadilla.bffinder.domain;
 import java.time.LocalDateTime;
 
 public class AdoptionPost {
+
     private int AdoptionPostId;
     private LocalDateTime date;
-    private String description;
-    private String address;
-    private Boolean active;
+    private String details;
+    private boolean active;
+    private int petId;
+
     private Pet pet;
 
     public int getAdoptionPostId() {
@@ -26,19 +28,19 @@ public class AdoptionPost {
         this.date = date;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDetails() {
+        return details;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDetails(String details) {
+        this.details = details;
     }
 
-    public Boolean getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
@@ -50,11 +52,11 @@ public class AdoptionPost {
         this.pet = pet;
     }
 
-    public String getAddress() {
-        return address;
+    public int getPetId() {
+        return petId;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPetId(int petId) {
+        this.petId = petId;
     }
 }

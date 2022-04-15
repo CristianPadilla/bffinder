@@ -33,11 +33,12 @@ public interface PetMapper {
 
     List<Pet> toPets(List<PetEntity> petEntities);
 
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+//    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @InheritInverseConfiguration
     @Mappings({
             @Mapping(target = "breedEntity", ignore = true),
-            @Mapping(target = "userEntity", ignore = true)
+            @Mapping(target = "userEntity", ignore = true),
+            @Mapping(target = "adoptionPostEntity", ignore = true)
     })
     PetEntity toPetEntity(Pet pet);
 
