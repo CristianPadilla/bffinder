@@ -3,12 +3,10 @@ package com.cpadilla.bffinder.domain.service;
 import com.cpadilla.bffinder.domain.AdoptionPost;
 import com.cpadilla.bffinder.domain.Pet;
 import com.cpadilla.bffinder.domain.repository.IAdoptionPostRepository;
-import com.cpadilla.bffinder.domain.repository.IPetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AdoptionPostService {
@@ -17,7 +15,14 @@ public class AdoptionPostService {
     private IAdoptionPostRepository repository;
 
 
-    public List<AdoptionPost> getAll() {
-        return repository.getAllRandom();
+    public List<AdoptionPost> getHomePosts() {
+        return repository.getHomePosts();
+    }
+
+    public AdoptionPost save(AdoptionPost adoptionPost){
+//        Pet pet = adoptionPost.getPet();
+//        pet.setAdoptionPost(adoptionPost);
+
+        return repository.save(adoptionPost);
     }
 }

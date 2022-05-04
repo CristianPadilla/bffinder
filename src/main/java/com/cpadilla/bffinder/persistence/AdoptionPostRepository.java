@@ -8,6 +8,7 @@ import com.cpadilla.bffinder.persistence.mapper.AdoptionPostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,8 +22,16 @@ public class AdoptionPostRepository implements IAdoptionPostRepository {
     private AdoptionPostMapper mapper;
 
     @Override
-    public List<AdoptionPost> getAllRandom() {
-        List<AdoptionPostEntity> adoptionPostEntities = (List<AdoptionPostEntity>) crudRepository.findAll();
-        return mapper.toAdoptionPosts(adoptionPostEntities);
+    public List<AdoptionPost> getHomePosts() {
+        Optional<List<AdoptionPostEntity>> adoptionPostEntities = crudRepository.findAllByStatusIsTrueOrderByDateDesc();
+        return adoptionPostEntities.map(adoptionPostEntities1 -> mapper.toAdoptionPosts(adoptionPostEntities1))
+                .orElse(Collections.emptyList());
+    }
+
+    @Override
+    public AdoptionPost save(AdoptionPost adoptionPost) {
+
+        AdoptionPostEntity adoptionPostEntity = crudRepository.save(mapper.toAdoptionPostEntity(adoptionPost));
+        return mapper.toAdoptionPost(adoptionPostEntity);
     }
 }

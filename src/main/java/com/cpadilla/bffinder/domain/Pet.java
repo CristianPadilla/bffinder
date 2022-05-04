@@ -16,10 +16,12 @@ public class Pet {
     private boolean active;
     private int breedId;
     private int ownerId;
-    private List<Photo> photos;
+    private int adoptionPostId;
 
+    private List<Photo> photos;
     private Breed breed;
     private User owner;
+    private AdoptionPost adoptionPost;
 
     public int getPetId() {
         return petId;
@@ -139,6 +141,22 @@ public class Pet {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public AdoptionPost getAdoptionPost() {
+        return adoptionPost;
+    }
+
+    public void setAdoptionPost(AdoptionPost adoptionPost) {
+        this.adoptionPost = adoptionPost;
+    }
+
+    public int getAdoptionPostId() {
+        return adoptionPostId;
+    }
+
+    public void setAdoptionPostId(int adoptionPostId) {
+        this.adoptionPostId = adoptionPostId;
     }
 
     @Override

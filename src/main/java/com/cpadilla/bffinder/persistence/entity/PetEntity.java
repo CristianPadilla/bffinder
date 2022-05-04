@@ -1,6 +1,9 @@
 package com.cpadilla.bffinder.persistence.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -37,10 +40,14 @@ public class PetEntity {
     @Column(name = "owner_id")
     private Integer ownerId;
 
-    @OneToOne(mappedBy = "petEntity")
+    @Column(name = "adoption_post_id", insertable = false, updatable = false)
+    private Integer adoptionPostId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "adoption_post_id")
     private AdoptionPostEntity adoptionPostEntity;
 
-    @OneToMany(mappedBy = "petEntity", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "petEntity", cascade = CascadeType.ALL)
     private List<ImageEntity> imageEntities;
 
     @ManyToOne
@@ -191,4 +198,11 @@ public class PetEntity {
         this.adoptionPostEntity = adoptionPostEntity;
     }
 
+    public Integer getAdoptionPostId() {
+        return adoptionPostId;
+    }
+
+    public void setAdoptionPostId(Integer adoptionPostId) {
+        this.adoptionPostId = adoptionPostId;
+    }
 }

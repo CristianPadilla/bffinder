@@ -28,6 +28,7 @@ public interface PetMapper {
             @Mapping(source = "imageEntities", target = "photos"),
             @Mapping(source = "breedEntity", target = "breed"),
             @Mapping(source = "userEntity", target = "owner"),
+            @Mapping(source = "adoptionPostId", target = "adoptionPostId"),
     })
     Pet toPet(PetEntity petEntity);
 

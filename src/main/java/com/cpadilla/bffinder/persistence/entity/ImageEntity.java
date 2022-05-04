@@ -13,11 +13,11 @@ public class ImageEntity {
 
     private String src;
 
-    @Column(name = "pet_id")
+    @Column(name = "pet_id", insertable = false, updatable = false)
     private Integer petId;
 
-    @ManyToOne
-    @JoinColumn(name = "pet_id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pet_id")
     private PetEntity petEntity;
 
 

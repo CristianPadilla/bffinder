@@ -17,7 +17,7 @@ public interface AdoptionPostMapper {
             @Mapping(source = "date", target = "date"),
             @Mapping(source = "description", target = "details"),
             @Mapping(source = "status", target = "active"),
-            @Mapping(source = "petId", target = "petId"),
+//            @Mapping(source = "petId", target = "petId"),
             @Mapping(source = "petEntity", target = "pet"),
     })
     AdoptionPost toAdoptionPost(AdoptionPostEntity adoptionPostEntity);
@@ -25,6 +25,5 @@ public interface AdoptionPostMapper {
     List<AdoptionPost> toAdoptionPosts(List<AdoptionPostEntity> adoptionPostEntities);
 
     @InheritInverseConfiguration
-    @Mapping(target = "petEntity", ignore = true)
     AdoptionPostEntity toAdoptionPostEntity(AdoptionPost adoptionPost);
 }

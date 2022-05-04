@@ -1,6 +1,7 @@
 package com.cpadilla.bffinder.persistence.entity;
 
-import com.cpadilla.bffinder.domain.Pet;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,11 +21,10 @@ public class AdoptionPostEntity {
 
     private Boolean status;
 
-    @Column(name = "pet_id")
-    private Integer petId;
+//    @Column(name = "pet_id")
+//    private Integer petId;
 
-    @OneToOne
-    @JoinColumn(name = "pet_id", referencedColumnName = "pet_id", insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "adoptionPostEntity")
     private PetEntity petEntity;
 
     public Integer getAdoptionPostId() {
@@ -59,13 +59,13 @@ public class AdoptionPostEntity {
         this.status = status;
     }
 
-    public Integer getPetId() {
-        return petId;
-    }
-
-    public void setPetId(Integer petId) {
-        this.petId = petId;
-    }
+//    public Integer getPetId() {
+//        return petId;
+//    }
+//
+//    public void setPetId(Integer petId) {
+//        this.petId = petId;
+//    }
 
     public PetEntity getPetEntity() {
         return petEntity;
