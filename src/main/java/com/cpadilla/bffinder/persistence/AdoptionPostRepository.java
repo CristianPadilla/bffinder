@@ -24,8 +24,16 @@ public class AdoptionPostRepository implements IAdoptionPostRepository {
     @Override
     public List<AdoptionPost> getHomePosts() {
         Optional<List<AdoptionPostEntity>> adoptionPostEntities = crudRepository.findAllByStatusIsTrueOrderByDateDesc();
+        adoptionPostEntities.ifPresent(adoptionPostEntities1 -> System.out.println("AAAAAAAAAAAAAAAA " + adoptionPostEntities1.get(0).toString()));
         return adoptionPostEntities.map(adoptionPostEntities1 -> mapper.toAdoptionPosts(adoptionPostEntities1))
                 .orElse(Collections.emptyList());
+    }
+
+    @Override
+    public Optional<AdoptionPost> getById(int AdoptionPostId) {
+        Optional<AdoptionPostEntity> adoptionPostEntity = crudRepository.findById(AdoptionPostId);
+//        adoptionPostEntity.ifPresent(adoptionPostEntities1 -> System.out.println("AAAAAAAAAAAAAAAA " + adoptionPostEntities1.get(0).toString()));
+        return adoptionPostEntity.map(adoptionPostEntity1 -> mapper.toAdoptionPost(adoptionPostEntity1));
     }
 
     @Override

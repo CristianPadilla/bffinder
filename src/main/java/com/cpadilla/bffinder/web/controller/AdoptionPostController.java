@@ -21,6 +21,12 @@ public class AdoptionPostController {
         return new ResponseEntity<>(service.getHomePosts(), HttpStatus.OK);
     }
 
+    @GetMapping("/{PostId}")
+    public ResponseEntity<AdoptionPost> getById(@PathVariable("PostId") int adopionPostId) {
+        return service.getById(adopionPostId).map(adoptionPost -> new ResponseEntity<>(adoptionPost, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @PostMapping("save")
     public ResponseEntity<AdoptionPost> create(@RequestBody AdoptionPost adoptionPost) {
         return new ResponseEntity<>(service.save(adoptionPost), HttpStatus.OK);

@@ -67,11 +67,24 @@ public class AdoptionPostEntity {
 //        this.petId = petId;
 //    }
 
+
     public PetEntity getPetEntity() {
         return petEntity;
     }
 
     public void setPetEntity(PetEntity petEntity) {
         this.petEntity = petEntity;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("AdoptionPostEntity{");
+        sb.append("AdoptionPostId=").append(AdoptionPostId);
+        sb.append(", date=").append(date);
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", status=").append(status);
+        sb.append(", petEntity=").append(petEntity);
+        sb.append('}');
+        return sb.toString();
     }
 }
