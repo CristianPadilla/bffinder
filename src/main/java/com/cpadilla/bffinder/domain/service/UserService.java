@@ -18,4 +18,8 @@ public class UserService {
     public Optional<List<User>> getAll() {
         return userRepository.getAll();
     }
+
+    public Optional<User> getById(int userId) {
+        return userRepository.getById(userId);
+    }
 }

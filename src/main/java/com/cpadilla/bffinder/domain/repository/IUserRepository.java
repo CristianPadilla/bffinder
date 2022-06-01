@@ -12,7 +12,7 @@ public interface IUserRepository {
 
     Optional<List<User>> getAll();
 
-    Pet save(User user);
+    User save(User user);
 
     Optional<User> update(User userDetails);
 
