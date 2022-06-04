@@ -10,6 +10,8 @@ public interface IUserRepository {
 
     Optional<User> getById(int userId);
 
+    Optional<User> getByEmail(String userEmail);
+
     Optional<List<User>> getAll();
 
     User save(User user);

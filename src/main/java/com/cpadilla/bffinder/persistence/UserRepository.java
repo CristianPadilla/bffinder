@@ -2,7 +2,7 @@ package com.cpadilla.bffinder.persistence;
 
 import com.cpadilla.bffinder.domain.User;
 import com.cpadilla.bffinder.domain.repository.IUserRepository;
-import com.cpadilla.bffinder.persistence.crud.UserCrusRepository;
+import com.cpadilla.bffinder.persistence.crud.UserCrudRepository;
 import com.cpadilla.bffinder.persistence.entity.UserEntity;
 import com.cpadilla.bffinder.persistence.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class UserRepository implements IUserRepository {
 
     @Autowired
-    private UserCrusRepository userCrudRepository;
+    private UserCrudRepository userCrudRepository;
 
     @Autowired
     private UserMapper mapper;
@@ -24,6 +24,12 @@ public class UserRepository implements IUserRepository {
     @Override
     public Optional<User> getById(int userId) {
         return userCrudRepository.findById(userId)
+                .map(userEntity -> mapper.toUser(userEntity));
+    }
+
+    @Override
+    public Optional<User> getByEmail(String userEmail) {
+        return userCrudRepository.findByEmail(userEmail)
                 .map(userEntity -> mapper.toUser(userEntity));
     }
 
