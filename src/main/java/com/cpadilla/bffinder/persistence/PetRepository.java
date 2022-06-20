@@ -34,7 +34,6 @@ public class PetRepository implements IPetRepository {
 
     @Override
     public Optional<List<Pet>> getAll() {
-
         List<PetEntity> petEntities = (List<PetEntity>) petCrudRepository.findAll();
         return Optional.of(mapper.toPets(petEntities));
     }
